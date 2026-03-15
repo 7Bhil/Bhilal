@@ -18,20 +18,20 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
+    { name: 'About me', href: '#about' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Skills', href: '#skills' },
   ];
 
   return (
-    <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+    <header className={`navbar-wrapper ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container nav-container">
-        <a href="#home" className="logo">
-          Bhilal<span className="text-gradient">.dev</span>
+        <a href="#home" className={`logo ${isScrolled ? 'logo-scrolled' : ''}`}>
+          Bhil<span style={{ color: 'var(--accent-primary)' }}>$</span>
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="nav-desktop">
+        <nav className="nav-desktop glass-panel floating-pill">
           <ul className="nav-links">
             {navLinks.map((link) => (
               <li key={link.name}>
@@ -39,25 +39,16 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          
-          <button 
-            onClick={toggleTheme} 
-            className="theme-toggle"
-            aria-label="Toggle theme"
-          >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
         </nav>
+        
+        <div className={`nav-actions-desktop ${isScrolled ? 'actions-scrolled' : ''}`}>
+          <a href="#contact" className="btn btn-primary btn-sm rounded-pill">
+            Contact me
+          </a>
+        </div>
 
         {/* Mobile Toggle */}
         <div className="nav-mobile-toggle">
-          <button 
-            onClick={toggleTheme} 
-            className="theme-toggle mr-2"
-            aria-label="Toggle theme"
-          >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="menu-toggle"
@@ -81,6 +72,9 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+          <li>
+             <a href="#contact" className="nav-mobile-link text-accent">Contact me</a>
+          </li>
         </ul>
       </div>
     </header>

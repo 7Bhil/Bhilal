@@ -12,24 +12,24 @@ const Hero = () => {
       </div>
       
       <div className="container hero-container">
-        <div className="hero-content animate-fade-in">
-          <div className="tech-badge">
+        <div className="hero-content">
+          <div className="tech-badge reveal reveal-stagger-1">
             <span className="live-dot"></span>
             Available for new opportunities
           </div>
           
-          <h1 className="hero-title">
-            Hi, I'm <span className="text-gradient">Bhilal CHITOU</span>
+          <h1 className="hero-title reveal reveal-stagger-2">
+            Hi, I'm <span className="text-accent">Bhilal CHITOU</span>
             <br />
             Full-Stack Developer.
           </h1>
           
-          <p className="hero-description">
+          <p className="hero-description reveal reveal-stagger-3">
             I craft modern, robust, and scalable web and mobile applications. 
             Passionate about creating elegant solutions using cutting-edge technologies.
           </p>
           
-          <div className="hero-actions">
+          <div className="hero-actions reveal reveal-stagger-4">
             <Button variant="primary">
               View My Work
               <ArrowRight size={18} />
@@ -40,7 +40,7 @@ const Hero = () => {
             </Button>
           </div>
           
-          <div className="hero-socials">
+          <div className="hero-socials reveal reveal-stagger-4 mt-4">
             <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-link">
               <Github size={22} />
             </a>

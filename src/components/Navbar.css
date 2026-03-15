@@ -1,4 +1,4 @@
-.navbar {
+.navbar-wrapper {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,19 +8,19 @@
   padding: 1.5rem 0;
 }
 
-.navbar.scrolled {
+.navbar-wrapper.scrolled {
   padding: 1rem 0;
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
+  background: transparent; /* Remove full-width background, the pill provides the background */
+  backdrop-filter: none;
+  border-bottom: none;
+  box-shadow: none;
 }
 
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative; /* Need this for absolute positioning of children during scroll state */
 }
 
 .logo {
@@ -28,12 +28,39 @@
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.02em;
+  color: var(--text-primary);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(0); /* Start at the far left edge of the container */
+  z-index: 10;
+}
+
+/* When scrolled, move logo inward */
+.logo-scrolled {
+  transform: translateX(10vw); /* Move in */
 }
 
 .nav-desktop {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  /* Add base transitions in case we move it, though the pill is usually centered */
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* The central pill itself acts as the background when scrolled */
+.floating-pill {
+  padding: 0.75rem 2.5rem;
+  border-radius: 9999px;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 0.5s ease;
+}
+
+.navbar-wrapper.scrolled .floating-pill {
+  background: rgba(10, 15, 28, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 .nav-links {
@@ -42,51 +69,38 @@
 }
 
 .nav-link {
+  font-size: 0.9rem;
   font-weight: 500;
-  color: var(--text-secondary);
-  transition: color 0.2s ease;
-  position: relative;
+  color: var(--text-primary);
+  opacity: 0.8;
+  transition: all 0.2s ease;
 }
 
 .nav-link:hover {
-  color: var(--text-primary);
+  opacity: 1;
+  color: white;
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent-gradient);
-  transition: width 0.3s ease;
-  border-radius: 2px;
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-.theme-toggle {
+.nav-actions-desktop {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--bg-tertiary);
-  color: var(--text-primary);
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(0); /* Start at the far right edge of the container */
+  z-index: 10;
 }
 
-.theme-toggle:hover {
-  background: var(--border-color);
-  transform: rotate(15deg);
+/* When scrolled, move action inwards */
+.actions-scrolled {
+  transform: translateX(-10vw); /* Move in */
 }
 
-.mr-2 {
-  margin-right: 0.5rem;
+.btn-sm {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
+}
+
+.rounded-pill {
+  border-radius: 9999px;
 }
 
 /* Mobile Nav */
@@ -137,8 +151,12 @@
   color: var(--accent-primary);
 }
 
+.text-accent {
+  color: var(--accent-primary);
+}
+
 @media (max-width: 768px) {
-  .nav-desktop {
+  .nav-desktop, .nav-actions-desktop {
     display: none;
   }
   .nav-mobile-toggle {
