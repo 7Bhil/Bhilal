@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
-import { Sun, Moon, Menu, X } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import { Sun, Moon, Menu, X, Globe } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
+  const { language, toggleLanguage, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -17,10 +19,10 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About me', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
+    { name: t('nav.home'), href: '#home' },
+    { name: t('nav.about'), href: '#about' },
+    { name: t('nav.projects'), href: '#projects' },
+    { name: t('nav.skills'), href: '#skills' },
   ];
 
   return (
@@ -42,8 +44,17 @@ const Navbar = () => {
         </nav>
         
         <div className={`nav-actions-desktop ${isScrolled ? 'actions-scrolled' : ''}`}>
+          <div className="nav-controls">
+            <button onClick={toggleLanguage} className="icon-btn" aria-label="Toggle language">
+              <Globe size={18} />
+              <span className="lang-text">{language.toUpperCase()}</span>
+            </button>
+            <button onClick={toggleTheme} className="icon-btn" aria-label="Toggle theme">
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+          </div>
           <a href="#contact" className="btn btn-primary btn-sm rounded-pill">
-            Contact me
+            {t('nav.contact')}
           </a>
         </div>
 
@@ -60,6 +71,15 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div className={`nav-mobile ${isMobileMenuOpen ? 'open' : ''}`}>
+        <div className="nav-mobile-controls">
+          <button onClick={toggleLanguage} className="icon-btn">
+            <Globe size={18} />
+            <span className="lang-text">{language.toUpperCase()}</span>
+          </button>
+          <button onClick={toggleTheme} className="icon-btn">
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+        </div>
         <ul className="nav-mobile-links">
           {navLinks.map((link) => (
             <li key={link.name}>
@@ -73,7 +93,9 @@ const Navbar = () => {
             </li>
           ))}
           <li>
-             <a href="#contact" className="nav-mobile-link text-accent">Contact me</a>
+             <a href="#contact" className="nav-mobile-link text-accent" onClick={() => setIsMobileMenuOpen(false)}>
+               {t('nav.contact')}
+             </a>
           </li>
         </ul>
       </div>

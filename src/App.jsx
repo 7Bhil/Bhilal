@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
+import { LanguageProvider } from './context/LanguageContext';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
@@ -36,21 +37,23 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="app-container">
-        <Navbar />
-        <main>
-          <Hero />
-          <About />
-          <Projects />
-          <Contact />
-        </main>
-        
-        <footer style={{ textAlign: 'center', padding: '2rem', borderTop: '1px solid var(--border-color)', color: 'var(--text-secondary)' }}>
-          <div className="container">
-            <p>&copy; {new Date().getFullYear()} Bhilal CHITOU. All rights reserved.</p>
-          </div>
-        </footer>
-      </div>
+      <LanguageProvider>
+        <div className="app-container">
+          <Navbar />
+          <main>
+            <Hero />
+            <About />
+            <Projects />
+            <Contact />
+          </main>
+          
+          <footer style={{ textAlign: 'center', padding: '2rem', borderTop: '1px solid var(--border-color)', color: 'var(--text-secondary)' }}>
+            <div className="container">
+              <p>&copy; {new Date().getFullYear()} Bhilal CHITOU. All rights reserved.</p>
+            </div>
+          </footer>
+        </div>
+      </LanguageProvider>
     </ThemeProvider>
   );
 }

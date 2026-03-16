@@ -24,21 +24,22 @@
 }
 
 [data-theme='light'] {
-  /* LIGHT MODE */
-  --bg-primary: #fafafa;
-  --bg-secondary: #ffffff;
-  --bg-tertiary: rgba(0, 0, 0, 0.03);
+  /* LIGHT MODE - White and Blue Theme */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8faff;
+  --bg-tertiary: #f0f4ff;
   
-  --text-primary: #171717;
-  --text-secondary: #525252;
-  --text-muted: #a3a3a3;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
   
-  --accent-primary: #ff5722; /* Vibrant orange */
-  --accent-secondary: #e64a19;
+  --accent-primary: #3b82f6; /* Vibrant blue */
+  --accent-secondary: #2563eb;
   
-  --border-color: rgba(0, 0, 0, 0.08);
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(0, 0, 0, 0.05);
+  --border-color: rgba(59, 130, 246, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(59, 130, 246, 0.08); /* Adjusted for blue theme */
+  --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
 
   --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
