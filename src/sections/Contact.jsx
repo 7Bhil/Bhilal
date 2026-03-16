@@ -47,19 +47,19 @@ const Contact = () => {
                 <div className="info-icon">
                   <Phone size={20} />
                 </div>
-                <span>+33 (0) 1 23 45 67 89</span>
+                <span>+229 01 98 87 40 19</span>
               </div>
               <div className="info-item">
                 <div className="info-icon">
                   <Mail size={20} />
                 </div>
-                <span>contact@bhilalchitou.com</span>
+                <span>7bhilal.chitou7@gmail.com</span>
               </div>
               <div className="info-item">
                 <div className="info-icon">
                   <MapPin size={20} />
                 </div>
-                <span>Paris, France (Remote)</span>
+                <span>Remote / Full-time</span>
               </div>
             </div>
             

@@ -21,8 +21,20 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
-  max-width: 100%; /* Force full width */
-  padding: 0 4rem; /* Add some breathing room from the absolute edge */
+  max-width: 100%;
+  padding: 0 4rem;
+}
+
+@media (max-width: 1024px) {
+  .nav-container {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-container {
+    padding: 0 1.25rem;
+  }
 }
 
 .logo {
@@ -36,9 +48,10 @@
   z-index: 10;
 }
 
-/* When scrolled, move logo inward to align with the central section flow */
-.logo-scrolled {
-  transform: translateX(12vw);
+@media (min-width: 1025px) {
+  .logo-scrolled {
+    transform: translateX(20vw);
+  }
 }
 
 .nav-desktop {
@@ -96,9 +109,10 @@
   z-index: 10;
 }
 
-/* When scrolled, move action inwards */
-.actions-scrolled {
-  transform: translateX(-12vw);
+@media (min-width: 1025px) {
+  .actions-scrolled {
+    transform: translateX(-20vw);
+  }
 }
 
 .btn-sm {

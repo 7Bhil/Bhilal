@@ -3,9 +3,9 @@ export const translations = {
     nav: {
       home: "Home",
       about: "About me",
-      projects: "Projects",
-      skills: "Skills",
-      contact: "Contact me"
+      projects: "Projets",
+      skills: "Compétences",
+      contact: "Contact"
     },
     hero: {
       available: "Available for new opportunities",
@@ -75,6 +75,14 @@ export const translations = {
       formMessage: "Tell me about your project",
       formSubmit: "Send Message",
       successMsg: "Message sent! I'll get back to you soon."
+    },
+    skills: {
+      title: "My Skills",
+      subtitle: "The tools and technologies I use to bring ideas to life.",
+      frontend: "Frontend Development",
+      backend: "Backend & database",
+      mobile: "Mobile Development",
+      tools_security: "Cybersecurity & Tools"
     }
   },
   fr: {
@@ -153,6 +161,14 @@ export const translations = {
       formMessage: "Parlez-moi de votre projet",
       formSubmit: "Envoyer le message",
       successMsg: "Message envoyé ! Je vous répondrai bientôt."
+    },
+    skills: {
+      title: "Mes Compétences",
+      subtitle: "Les outils et technologies que j'utilise pour donner vie à vos idées.",
+      frontend: "Développement Frontend",
+      backend: "Backend & Base de données",
+      mobile: "Développement Mobile",
+      tools_security: "Cybersécurité & Outils"
     }
   }
 };

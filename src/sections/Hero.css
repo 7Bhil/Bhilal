@@ -186,6 +186,13 @@
   }
   
   .hero-visual {
-    display: none; /* Hide on small screens for cleaner look */
+    height: auto;
+    margin-top: 2rem;
+    order: -1; /* Place photo above text on mobile for better focus */
+  }
+
+  .profile-image-wrapper {
+    width: 200px;
+    height: 200px;
   }
 }

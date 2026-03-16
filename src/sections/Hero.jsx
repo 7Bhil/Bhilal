@@ -44,7 +44,7 @@ const Hero = () => {
           </div>
           
           <div className="hero-socials reveal reveal-stagger-4 mt-4">
-            <a href="https://github.com/7Bhil/Bhilal" target="_blank" rel="noopener noreferrer" className="social-link">
+            <a href="https://github.com/7Bhil/" target="_blank" rel="noopener noreferrer" className="social-link">
               <Github size={22} />
             </a>
             <a href="https://www.linkedin.com/in/bhilal-chitou/" target="_blank" rel="noopener noreferrer" className="social-link">
@@ -53,7 +53,7 @@ const Hero = () => {
             <a href="https://web.facebook.com/bh.chitou.9/" target="_blank" rel="noopener noreferrer" className="social-link">
               <Facebook size={22} />
             </a>
-            <a href="mailto:contact@bhilalchitou.com" className="social-link">
+            <a href="mailto:7bhilal.chitou7@gmail.com" className="social-link">
               <Mail size={22} />
             </a>
           </div>
