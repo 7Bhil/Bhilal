@@ -50,7 +50,7 @@ const Hero = () => {
             <a href="https://www.linkedin.com/in/bhilal-chitou/" target="_blank" rel="noopener noreferrer" className="social-link">
               <Linkedin size={22} />
             </a>
-            <a href="https://web.facebook.com/bh.chitou.9/" target="_blank" rel="noopener noreferrer" className="social-link">
+            <a href="https://web.facebook.com/7Bhil" target="_blank" rel="noopener noreferrer" className="social-link">
               <Facebook size={22} />
             </a>
             <a href="mailto:7bhilal.chitou7@gmail.com" className="social-link">
