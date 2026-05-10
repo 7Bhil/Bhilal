@@ -12,17 +12,45 @@ const Contact = () => {
     email: '',
     message: ''
   });
+  const [status, setStatus] = useState('idle');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In a real app, integrate an API like Formspree or EmailJS here
-    console.log("Form submitted: ", formData);
-    alert(t('contact.successMsg'));
-    setFormData({ name: '', email: '', message: '' });
+    setStatus('loading');
+    
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "409f18c0-89b7-49a1-b700-3cb71f989740", 
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        // Reset button
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 5000);
+      }
+    } catch (error) {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
   };
 
   return (
@@ -110,9 +138,12 @@ const Contact = () => {
             </div>
             
             <div className="form-submit">
-              <Button type="submit" variant="primary">
-                {t('contact.formSubmit')}
-                <Send size={18} />
+              <Button type="submit" variant="primary" disabled={status === 'loading'} className={status === 'success' ? 'btn-success' : status === 'error' ? 'btn-error' : ''}>
+                {status === 'loading' ? 'Envoi en cours...' : 
+                 status === 'success' ? t('contact.successMsg') : 
+                 status === 'error' ? 'Erreur lors de l\'envoi' : 
+                 t('contact.formSubmit')}
+                {status === 'idle' && <Send size={18} />}
               </Button>
             </div>
           </form>
